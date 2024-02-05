@@ -1,0 +1,5 @@
+Flask==3.0.2
+Flask-SQLAlchemy==3.0.3
+pymysql==1.1.0
+flask-cors==4.0.0
+cryptography # https://stackoverflow.com/questions/54477829/cryptography-is-required-for-sha256-password-or-caching-sha2-password

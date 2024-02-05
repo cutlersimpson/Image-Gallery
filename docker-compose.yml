@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_DATABASE: images
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    restart: always
+    #https://forums.docker.com/t/how-best-to-populate-a-mysql-database/66778
+    volumes:
+      - ./images.sql:/docker-entrypoint-initdb.d/dump.sql
+      - db-data:/var/lib/mysql
+    command: --init-file /docker-entrypoint-initdb.d/dump.sql
+    ports:
+      - "3306:3306"
+
+  server:
+    build: ./server
+    ports:
+      - "5015:5015"
+    volumes:
+      - ./server:/app
+    restart: on-failure
+    depends_on:
+      - db
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - server
+
+volumes:
+  db-data:
