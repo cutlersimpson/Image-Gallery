@@ -1,0 +1,53 @@
+.App {
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  height: 500px;
+  width: 500px;
+  margin-bottom: 12px;
+}
+
+.reactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+  margin-bottom: 24px;
+}
+
+.reaction-button {
+  margin-left: 12px;
+}
+
+.thumbs-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-right: 8px;
+  }
+}
+
+.thumbs-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+
+  p {
+    margin-right: 8px;
+  }
+}
+
+.thumb-icon {
+  cursor: pointer;
+}
